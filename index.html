@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amazon Style Homepage</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3e6e6;
+            color: #111;
+        }
+
+        /* =========================
+           TOP HEADER
+        ========================= */
+
+        .header {
+            height: 85px;
+            background-color: #131921;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo span {
+            color: #ff9900;
+        }
+
+        .deliver {
+            font-size: 13px;
+            line-height: 18px;
+            white-space: nowrap;
+        }
+
+        .deliver strong {
+            font-size: 16px;
+        }
+
+        /* Search bar */
+
+        .search {
+            height: 54px;
+            flex: 1;
+            max-width: 700px;
+
+            display: flex;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .category {
+            width: 70px;
+            border: none;
+            background-color: #eee;
+            font-size: 15px;
+            padding: 0 10px;
+        }
+
+        .search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 19px;
+            padding: 0 15px;
+        }
+
+        .search button {
+            width: 65px;
+            border: none;
+            background-color: #febd69;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .language {
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .account,
+        .returns {
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .account strong,
+        .returns strong {
+            font-size: 17px;
+        }
+
+        .cart {
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav {
+            height: 53px;
+            background-color: #232f3e;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 24px;
+        }
+
+        .all {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .nav-item {
+            padding: 10px 13px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-item:hover {
+            border: 1px solid white;
+        }
+
+        .shop {
+            margin-left: auto;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            height: 410px;
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    rgba(36, 55, 96, 0.9),
+                    rgba(36, 55, 96, 0.1)
+                ),
+                url("https://images.unsplash.com/photo-1511707171634-5f897ff02aa9");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 50px;
+            color: white;
+        }
+
+        .hero-text {
+            width: 450px;
+        }
+
+        .hero-text h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+        }
+
+        /* =========================
+           INFORMATION BAR
+        ========================= */
+
+        .info {
+            background-color: white;
+            margin: -10px 25px 25px;
+            padding: 20px;
+            text-align: center;
+            font-size: 17px;
+            position: relative;
+        }
+
+        .info a {
+            color: #007185;
+            text-decoration: none;
+        }
+
+        /* =========================
+           PRODUCT GRID
+        ========================= */
+
+        .products {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+            padding: 0 25px 40px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            min-height: 430px;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           TOP DEAL
+        ========================= */
+
+        .deal-image {
+            width: 100%;
+            height: 290px;
+
+            object-fit: cover;
+        }
+
+        .deal-label {
+            margin-top: 10px;
+        }
+
+        .deal-label span {
+            background-color: #cc0c39;
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           GAMING
+        ========================= */
+
+        .gaming-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .gaming-item {
+            text-align: center;
+        }
+
+        .gaming-item img {
+            width: 100%;
+            height: 130px;
+            object-fit: contain;
+        }
+
+        .gaming-item p {
+            font-size: 15px;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           FASHION
+        ========================= */
+
+        .fashion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .fashion-item img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+
+        .fashion-item p {
+            margin-top: 5px;
+            font-size: 15px;
+        }
+
+        /* =========================
+           FIXED ELEMENT
+        ========================= */
+
+        .fixed-box {
+            width: 80px;
+            height: 180px;
+
+            background: linear-gradient(
+                135deg,
+                #7d063f,
+                #df1767,
+                #5c0035
+            );
+
+            border-radius: 50% 0 0 50%;
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+
+            z-index: 1000;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            height: 150px;
+            background-color: #131a22;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 18px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .header {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px;
+            }
+
+            .search {
+                order: 3;
+                width: 100%;
+                max-width: none;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                overflow-x: auto;
+            }
+
+            .account,
+            .returns,
+            .language {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="logo">
+            amazon<span>⌣</span>
+        </div>
+
+        <div class="deliver">
+            📍 Deliver to<br>
+            <strong>India</strong>
+        </div>
+
+        <div class="search">
+
+            <select class="category">
+                <option>All</option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Books</option>
+            </select>
+
+            <input
+                type="text"
+                placeholder="Search Amazon"
+            >
+
+            <button>⌕</button>
+
+        </div>
+
+        <div class="language">
+            🇺🇸 EN
+        </div>
+
+        <div class="account">
+            Hello, sign in<br>
+            <strong>Account & Lists</strong>
+        </div>
+
+        <div class="returns">
+            Returns<br>
+            <strong>& Orders</strong>
+        </div>
+
+        <div class="cart">
+            🛒 Cart
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav class="nav">
+
+        <div class="all">
+            ☰ All
+        </div>
+
+        <a href="#" class="nav-item">
+            Today's Deals
+        </a>
+
+        <a href="#" class="nav-item">
+            Customer Service
+        </a>
+
+        <a href="#" class="nav-item">
+            Registry
+        </a>
+
+        <a href="#" class="nav-item">
+            Gift Cards
+        </a>
+
+        <a href="#" class="nav-item">
+            Sell
+        </a>
+
+        <div class="shop">
+            Shop deals in Electronics
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+                Great deals.
+                Discover it all.
+            </h1>
+
+            <p>
+                Explore electronics, fashion,
+                gaming accessories and more.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         INFO BAR
+    ========================== -->
+
+    <div class="info">
+
+        You are on amazon.com.
+        You can also shop on Amazon India
+        for millions of products with fast
+        local delivery.
+
+        <a href="#">
+            Click here to go to amazon.in
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         PRODUCT CARDS
+    ========================== -->
+
+    <section class="products">
+
+
+        <!-- TOP DEAL -->
+
+        <div class="card">
+
+            <h2>
+                Top Deal
+            </h2>
+
+            <img
+                class="deal-image"
+                src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55"
+                alt="Top deal"
+            >
+
+            <div class="deal-label">
+
+                <span>
+                    Up to 60% off
+                </span>
+
+                &nbsp;
+
+                <strong>
+                    Top deal
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAMING -->
+
+        <div class="card">
+
+            <h2>
+                Gaming accessories
+            </h2>
+
+            <div class="gaming-grid">
+
+
+                <div class="gaming-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1599669454699-248893623440"
+                        alt="Headset"
+                    >
+
+                    <p>
+                        Headsets
+                    </p>
+
+                </div>
+
+
+                <div class="gaming-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1587829741301-dc798b83add3"
+                        alt="Keyboard"
+                    >
+
+                    <p>
+                        Keyboards
+                    </p>
+
+                </div>
+
+
+                <div class="gaming-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1527814050087-3793815479db"
+                        alt="Gaming mouse"
+                    >
+
+                    <p>
+                        Gaming mice
+                    </p>
+
+                </div>
+
+
+                <div class="gaming-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1598550476439-6847785fcea6"
+                        alt="Gaming chair"
+                    >
+
+                    <p>
+                        Gaming chairs
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FASHION -->
+
+        <div class="card">
+
+            <h2>
+                Shop deals in Fashion
+            </h2>
+
+            <div class="fashion-grid">
+
+
+                <div class="fashion-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542272604-787c3835535d"
+                        alt="Jeans"
+                    >
+
+                    <p>
+                        Jeans under $50
+                    </p>
+
+                </div>
+
+
+                <div class="fashion-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b"
+                        alt="Tops"
+                    >
+
+                    <p>
+                        Tops under $25
+                    </p>
+
+                </div>
+
+
+                <div class="fashion-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3"
+                        alt="Dresses"
+                    >
+
+                    <p>
+                        Dresses
+                    </p>
+
+                </div>
+
+
+                <div class="fashion-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2"
+                        alt="Shoes"
+                    >
+
+                    <p>
+                        Shoes
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FIXED DIV
+    ========================== -->
+
+    <div class="fixed-box"></div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        © 2026 Amazon Style Practice Page
+
+    </footer>
+
+
+</body>
+</html>
